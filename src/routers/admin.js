@@ -5,17 +5,17 @@ const auth = require('../middleware/auth');
 const router = new express.Router();
 
 // POST Create admin
-// router.post('/admin', async (req, res) => {
-//     const admin = new Admin(req.body);
+router.post('/admin', async (req, res) => {
+    const admin = new Admin(req.body);
 
-//     try {
-//         await admin.save();
-//         const token = await admin.generateAuthToken();
-//         res.status(201).send({admin, token});
-//     } catch (e) {
-//         res.status(400).send(e);
-//     }
-// });
+    try {
+        await admin.save();
+        const token = await admin.generateAuthToken();
+        res.status(201).send({admin, token});
+    } catch (e) {
+        res.status(400).send(e);
+    }
+});
 
 // POST Login (login: admin, password: 123)
 router.post('/login', async (req, res) => {
